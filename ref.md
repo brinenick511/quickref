@@ -1,0 +1,2 @@
+huggingface-cli download --local-dir-use-symlinks False --resume-download GPT --local-dir ./
+huggingface-cli download --local-dir-use-symlinks False --repo-type dataset --resume-download WIKI --local-dir ./
