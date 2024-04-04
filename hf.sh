@@ -15,8 +15,7 @@ EOF
 NAME=${1}
 TYPE=${2:-"model"}
 OUTPUT_DIR=${3:-"/data/yanghq/${TYPE}s/NAME/"}
-
-if [ $# -ge 1 ] && [ $# -le 3 ]; then
+if [ $# -lt 1 ] || [ $# -gt 3 ]; then
     echo "传递给脚本的参数个数：$#"
     show_help
     exit 1
