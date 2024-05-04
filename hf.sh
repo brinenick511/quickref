@@ -39,11 +39,17 @@ if [ $# -lt 1 ] || [ $# -gt 3 ]; then
     exit 1
 fi
 
+show_param() {
+    echo "NAME = ${NAME}, TYPE = ${TYPE}, OUTPUT_DIR = ${OUTPUT_DIR}"
+}
+
 if [ "$TYPE" = "model" ]; then
+    show_param
     echo "huggingface-cli download --local-dir-use-symlinks False --resume-download $NAME --local-dir $OUTPUT_DIR"
     prompt_continue
     huggingface-cli download --local-dir-use-symlinks False --resume-download $NAME --local-dir $OUTPUT_DIR --token "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"
 elif [ "$TYPE" = "dataset" ]; then
+    show_param
     echo "huggingface-cli download --local-dir-use-symlinks False --repo-type dataset --resume-download $NAME --local-dir $OUTPUT_DIR"
     prompt_continue
     huggingface-cli download --local-dir-use-symlinks False --repo-type dataset --resume-download $NAME --local-dir $OUTPUT_DIR --token "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"
