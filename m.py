@@ -32,6 +32,7 @@ def send_qq_email(subject='### GPU提醒 ###', body='<=GPU提醒=>'):
             server.login(sender_email, password)
             server.sendmail(sender_email, [msg['To']], msg.as_string())
         print('邮件发送成功')
+        sys.exit(0)
     except smtplib.SMTPException as e:
         print('邮件发送失败:', str(e))
 
@@ -58,7 +59,6 @@ def check_gpu_memory():
         for i in range(gpu_count):
             s+=f' {i}, {mem[i]}GB |'
         send_qq_email(body=s)
-        sys.exit(0)
         
 if __name__ == "__main__":
     while True:
