@@ -10,7 +10,7 @@ pynvml.nvmlInit()
 gpu_count = pynvml.nvmlDeviceGetCount()
 
 memory_threshold = 3700 # MB
-sleep_seconds = 5 # seconds
+sleep_seconds = 60 # seconds
 
 def get_time():
     return str(time.strftime('%m/%d %H:%M:%S',time.localtime(time.time())))
@@ -47,11 +47,11 @@ def check_gpu_memory():
         mem[i]=used_memory_mb/1024
         mem[i]=int(mem[i]*100)/100
         
-        print(f"GPU {i}: {used_memory_mb:.2f} MB used / {total_memory_mb:.2f} MB total")
+        print(f"GPU {i}: {used_memory_mb/1024:.2f} / {total_memory_mb/1024:.2f} | {used_memory_mb/total_memory_mb*100:.2f}%")
         
         if used_memory_mb < memory_threshold:
             flag=False
-            print(f"Alert: GPU {i} memory usage is below threshold: {used_memory_mb:.2f} MB")
+            print(f"Alert: GPU {i} memory usage is below threshold: {used_memory_mb/1024:.2f} GB")
     if flag:
     # if True:
         s='|'
