@@ -10,7 +10,7 @@ nvidia_smi_output=$(nvidia-smi --query-compute-apps=pid,used_memory,process_name
 if [ -z "$nvidia_smi_output" ]; then
     echo "No GPU processes found."
 else
-    printf "| %-8s|%10s| %-3s | %-15s\n" "USER " " MEMORY   " "GPU" "PROCESS"
+    printf "| %-8s| %-3s |%10s | %-15s\n" "USER " "GPU" " MEMORY   " "PROCESS"
     echo "$nvidia_smi_output" | while IFS=, read -r pid used_memory process_name gpu_bus_id gpu_serial
     do
         username=$(ps -o uname= -p $pid)
@@ -21,6 +21,6 @@ else
         else
             process="$process_name"
 fi
-        printf "| %-8s|%-10s|  %-2s |%-15s\n" "$username" "$used_memory" "$gpu_id" "$process"
+        printf "| %-8s|  %-2s |%-10s |%-15s\n" "$username" "$gpu_id" "$used_memory" "$process"
     done
 fi
