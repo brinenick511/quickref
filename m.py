@@ -10,10 +10,10 @@ pynvml.nvmlInit()
 gpu_count = pynvml.nvmlDeviceGetCount()
 
 memory_threshold = 3700 # MB
-sleep_seconds = 60 # seconds
+sleep_seconds = 5 # seconds
 
 def get_time():
-    return str(time.strftime('%Y/%m/%d %H:%M:%S',time.localtime(time.time())))
+    return str(time.strftime('%m/%d %H:%M:%S',time.localtime(time.time())))
 
 def send_qq_email(subject='### GPU提醒 ###', body='<=GPU提醒=>'):
     msg = MIMEText(body, 'plain', 'utf-8')
@@ -39,7 +39,6 @@ def send_qq_email(subject='### GPU提醒 ###', body='<=GPU提醒=>'):
 def check_gpu_memory():
     mem=[0.]*gpu_count
     flag=False
-    print(f'\n------\n{get_time()}\n------\n')
     for i in range(gpu_count):
         handle = pynvml.nvmlDeviceGetHandleByIndex(i)
         memory_info = pynvml.nvmlDeviceGetMemoryInfo(handle)
@@ -61,7 +60,11 @@ def check_gpu_memory():
         send_qq_email(body=s)
         
 if __name__ == "__main__":
+    init_time = get_time()
+    cnt=0
     while True:
+        print(f'\n------\n| {init_time} | {get_time()} | count={cnt}\n------\n')
         check_gpu_memory()
         print(f'\nQuery again in {sleep_seconds} seconds...')
-        time.sleep(60)  # seconds
+        cnt+=1
+        time.sleep(sleep_seconds)  # seconds
