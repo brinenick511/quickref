@@ -9,7 +9,8 @@ pynvml.nvmlInit()
 
 gpu_count = pynvml.nvmlDeviceGetCount()
 
-memory_threshold = 3700  # MB
+memory_threshold = 3700 # MB
+sleep_seconds = 60 # seconds
 
 def get_time():
     return str(time.strftime('%Y/%m/%d %H:%M:%S',time.localtime(time.time())))
@@ -62,4 +63,5 @@ def check_gpu_memory():
 if __name__ == "__main__":
     while True:
         check_gpu_memory()
+        print(f'\nQuery again in {sleep_seconds} seconds...')
         time.sleep(60)  # seconds
