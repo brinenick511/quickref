@@ -7,7 +7,7 @@ cat << EOF
 
     NAME=${1}
     TYPE=${2:-"model"}
-    OUTPUT_DIR=${3:-"/data/yanghq/${TYPE}s/${NAME}/"}
+    OUTPUT_DIR=${3:-"/new_data/yanghq/${TYPE}s/${NAME}/"}
 
 EOF
 }
@@ -32,7 +32,7 @@ done
 
 NAME=${1}
 TYPE=${2:-"model"}
-OUTPUT_DIR=${3:-"/data/yanghq/${TYPE}s/${NAME}/"}
+OUTPUT_DIR=${3:-"/new_data/yanghq/${TYPE}s/${NAME}/"}
 if [ $# -lt 1 ] || [ $# -gt 3 ]; then
     echo "传递给脚本的参数个数：$#"
     show_help
