@@ -42,7 +42,7 @@ def send_qq_email(subject='### GPU提醒 ###', body='<=GPU提醒=>'):
         sys.exit(0)
     except smtplib.SMTPException as e:
         print('邮件发送失败:', str(e))
-def draw_memory():
+def draw_memory_tqdm():
     mem=[0.]*gpu_count
     for i in range(gpu_count):
         handle = pynvml.nvmlDeviceGetHandleByIndex(i)
@@ -56,6 +56,23 @@ def draw_memory():
             for i in range(mem[i]):
                 # pbar.set_postfix_str('',)
                 pbar.update(1)
+
+def draw_memory():
+    return draw_memory_tqdm()
+    mem=[0.]*gpu_count
+    for i in range(gpu_count):
+        handle = pynvml.nvmlDeviceGetHandleByIndex(i)
+        memory_info = pynvml.nvmlDeviceGetMemoryInfo(handle)
+        used_memory_mb = memory_info.used / 1024 / 1024  # MB
+        total_memory_mb = memory_info.total / 1024 / 1024
+        mem[i]=used_memory_mb / total_memory_mb
+        mem[i]=int(round(mem[i]*100))
+    for i in range(gpu_count):
+        with tqdm(total=100,desc=f"# GPU {i}") as pbar:
+            pbar.update(mem[i])
+            # for i in range(mem[i]):
+                # pbar.set_postfix_str('',)
+                # pbar.update(1)
     
 def check_gpu_memory(send_email):
     if not send_email:
