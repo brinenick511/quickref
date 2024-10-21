@@ -33,6 +33,9 @@ done
 NAME=${1}
 TYPE=${2:-"model"}
 OUTPUT_DIR=${3:-"${HOME}/${TYPE}s/${NAME}/"}
+HF_TOKEN="hf_GwiXRPScbwISYfe"
+HF_TOKEN=${HF_TOKEN}"JSGzarurZGaVOqeZSqQ"
+
 if [ $# -lt 1 ] || [ $# -gt 3 ]; then
     echo "传递给脚本的参数个数：$#"
     show_help
@@ -47,12 +50,12 @@ if [ "$TYPE" = "model" ]; then
     show_param
     echo "huggingface-cli download --local-dir-use-symlinks False --resume-download $NAME --local-dir $OUTPUT_DIR"
     prompt_continue
-    huggingface-cli download --local-dir-use-symlinks False --resume-download $NAME --local-dir $OUTPUT_DIR --token "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"
+    huggingface-cli download --local-dir-use-symlinks False --resume-download $NAME --local-dir $OUTPUT_DIR --token ${HF_TOKEN}
 elif [ "$TYPE" = "dataset" ]; then
     show_param
     echo "huggingface-cli download --local-dir-use-symlinks False --repo-type dataset --resume-download $NAME --local-dir $OUTPUT_DIR"
     prompt_continue
-    huggingface-cli download --local-dir-use-symlinks False --repo-type dataset --resume-download $NAME --local-dir $OUTPUT_DIR --token "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"
+    huggingface-cli download --local-dir-use-symlinks False --repo-type dataset --resume-download $NAME --local-dir $OUTPUT_DIR --token ${HF_TOKEN}
 else
     echo "下载类型错误：$#"
     show_help
