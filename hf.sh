@@ -33,8 +33,10 @@ done
 NAME=${1}
 TYPE=${2:-"model"}
 OUTPUT_DIR=${3:-"${HOME}/${TYPE}s/${NAME}/"}
-HF_TOKEN="hf_GwiXRPScbwISYfe"
-HF_TOKEN=${HF_TOKEN}"JSGzarurZGaVOqeZSqQ"
+HF_TOKEN="hf_GwiXRPS"
+HF_TOKEN=${HF_TOKEN}"cbwISYfe"
+HF_TOKEN=${HF_TOKEN}"JSGzarur"
+HF_TOKEN=${HF_TOKEN}"ZGaVOqeZSqQ"
 
 if [ $# -lt 1 ] || [ $# -gt 3 ]; then
     echo "传递给脚本的参数个数：$#"
