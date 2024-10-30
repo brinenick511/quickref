@@ -90,7 +90,7 @@ def check_gpu_memory(send_email):
         print(f"GPU {i}: {used_memory_mb/1024:.2f} / {total_memory_mb/1024:.2f} | {used_memory_mb/total_memory_mb*100:.2f}%")
         
         if used_memory_mb < memory_threshold:
-            flag=False
+            flag=True
             print(f"Alert: GPU {i} memory usage is below threshold: {used_memory_mb/1024:.2f} GB")
     if flag:
     # if True:
@@ -98,6 +98,7 @@ def check_gpu_memory(send_email):
         for i in range(gpu_count):
             s+=f' {i}, {mem[i]}GB |'
         send_qq_email(body=s)
+        exit(0)
         
 if __name__ == "__main__":
     args = parse_args()
