@@ -79,6 +79,7 @@ def check_gpu_memory(send_email):
         return draw_memory()
     mem=[0.]*gpu_count
     flag=False
+    gl=[5,7,9]
     for i in range(gpu_count):
         handle = pynvml.nvmlDeviceGetHandleByIndex(i)
         memory_info = pynvml.nvmlDeviceGetMemoryInfo(handle)
@@ -89,7 +90,7 @@ def check_gpu_memory(send_email):
         
         print(f"GPU {i}: {used_memory_mb/1024:.2f} / {total_memory_mb/1024:.2f} | {used_memory_mb/total_memory_mb*100:.2f}%")
         
-        if used_memory_mb < memory_threshold:
+        if used_memory_mb < memory_threshold and i in gl:
             flag=True
             print(f"Alert: GPU {i} memory usage is below threshold: {used_memory_mb/1024:.2f} GB")
     if flag:
