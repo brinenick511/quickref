@@ -28,7 +28,7 @@ if __name__ == "__main__":
         #     max_num = 8,
         #     sleep_sec = 5,
         # )
-        cq = dei.Conqueror(5*60, 0, 9, 5, )
+        cq = dei.Conqueror(5*60, 2, 10, 5, )
         tmp = cq.conquer()
         if tmp is None or tmp == '0':
             pass

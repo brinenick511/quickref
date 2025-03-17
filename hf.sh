@@ -32,6 +32,17 @@ done
 
 NAME=${1}
 TYPE=${2:-"model"}
+
+if [ "$TYPE" = "m" ]; then
+    TYPE="model"
+elif [ "$TYPE" = "models" ]; then
+    TYPE="model"
+elif [ "$TYPE" = "d" ]; then
+    TYPE="dataset"
+elif [ "$TYPE" = "datasets" ]; then
+    TYPE="dataset"
+fi
+
 OUTPUT_DIR=${3:-"${HOME}/${TYPE}s/${NAME}/"}
 HF_TOKEN="hf_GwiXRPS"
 HF_TOKEN=${HF_TOKEN}"cbwISYfe"
