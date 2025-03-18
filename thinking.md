@@ -26,3 +26,8 @@ arc_challenge,arc_easy,boolq,hellaswag,openbookqa,rte,winogrande,
 
 mmlu,
 
+---
+
+# idea
+
+experts specialization: multilingual
