@@ -160,6 +160,6 @@ cython_debug/
 #.idea/
 
 # Customized
-*gpu_list.txt
-*test.ipynb
-*thinking.md
+gpu_list.txt
+.ipynb
+.md
