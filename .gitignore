@@ -161,5 +161,5 @@ cython_debug/
 
 # Customized
 gpu_list.txt
-# test.ipynb
-# thinking.md
+test.ipynb
+thinking.md
