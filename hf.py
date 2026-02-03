@@ -54,7 +54,7 @@ def download_huggingface(name, type="model", download_path=None, debugging=False
         "--resume-download",
         name,
         "--local-dir", download_path,
-        "--token", hf_token
+        # "--token", hf_token
     ]
     if type == "dataset":
         cmd.insert(2, "--repo-type")
@@ -120,10 +120,10 @@ if __name__ == "__main__":
     #     sys.exit(0)
     # download_huggingface(args.name, args.type, args.download_path)
     l=[
-        'Qwen/Qwen2.5-1.5B',
-        'Qwen/Qwen2.5-1.5B-Instruct',
-        'Qwen/Qwen2.5-3B',
-        'Qwen/Qwen2.5-3B-Instruct',
+        'Qwen/Qwen3-30B-A3B-Instruct-2507',
+        # 'Qwen/Qwen2.5-1.5B-Instruct',
+        # 'Qwen/Qwen2.5-3B',
+        # 'Qwen/Qwen2.5-3B-Instruct',
     ]
     # l=['Qwen/Qwen2.5-0.5B',]
     for model_name in l:
