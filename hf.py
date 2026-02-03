@@ -120,20 +120,10 @@ if __name__ == "__main__":
     #     sys.exit(0)
     # download_huggingface(args.name, args.type, args.download_path)
     l=[
-        'Qwen/Qwen2.5-14B-Instruct-AWQ',
-        'Qwen/Qwen2.5-14B-Instruct-GPTQ-Int8',
-        'Qwen/Qwen2.5-14B-Instruct-GPTQ-Int4',
-        'Qwen/Qwen2.5-14B-Instruct',
-        'unsloth/Qwen2.5-14B-Instruct-bnb-4bit',
-        'unsloth/Qwen2.5-14B-Instruct-unsloth-bnb-4bit',
-    ]
-    l=[
-        'Qwen/Qwen2.5-0.5B-Instruct-AWQ',
-        'Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int8',
-        'Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int4',
-        'Qwen/Qwen2.5-0.5B-Instruct',
-        'unsloth/Qwen2.5-0.5B-Instruct-bnb-4bit',
-        'unsloth/Qwen2.5-0.5B-Instruct-unsloth-bnb-4bit',
+        'Qwen/Qwen2.5-1.5B',
+        'Qwen/Qwen2.5-1.5B-Instruct',
+        'Qwen/Qwen2.5-3B',
+        'Qwen/Qwen2.5-3B-Instruct',
     ]
     # l=['Qwen/Qwen2.5-0.5B',]
     for model_name in l:

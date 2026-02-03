@@ -31,3 +31,13 @@ mmlu,
 # idea
 
 experts specialization: multilingual
+
+multilingual-word-in-context,
+target(mulit-times in a prompt) -> indices,
+
+id,lemma,pos,sentence1,sentence2,ranges1,ranges2,
+tag,
+->
+lemma1,lemma2,
+
+duplicated
